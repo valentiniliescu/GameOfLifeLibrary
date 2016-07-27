@@ -70,5 +70,7 @@ namespace GameOfLifeLibrary.Tests
             grid[1, 1].Should().BeTrue();
             grid[2, 1].Should().BeTrue();
         }
+
+        //TODO: add invalid parsing tests
     }
 }
