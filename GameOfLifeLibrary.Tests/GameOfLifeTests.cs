@@ -23,5 +23,11 @@ namespace GameOfLifeLibrary.Tests
         {
             GameOfLife.GetNextGeneration(".").Should().Be(".");
         }
+
+        [TestMethod]
+        public void GetNextGenerationOnA2X2GridWithAllLivingCellsShouldReturnTheSameGrid()
+        {
+            GameOfLife.GetNextGeneration("**\n**").Should().Be("**\n**");
+        }
     }
 }
