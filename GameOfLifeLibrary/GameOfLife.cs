@@ -4,7 +4,7 @@
     {
         public static string GetNextGeneration(string grid)
         {
-            throw new System.NotImplementedException();
+            return string.Empty;
         }
     }
 }
