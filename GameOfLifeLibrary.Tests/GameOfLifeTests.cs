@@ -7,19 +7,19 @@ namespace GameOfLifeLibrary.Tests
     public class GameOfLifeTests
     {
         [TestMethod]
-        public void GetNextGenerationShouldReturnEmptyForEmptyGrid()
+        public void GetNextGenerationOnEmptyGridShouldReturnEmpty()
         {
             GameOfLife.GetNextGeneration(string.Empty).Should().BeEmpty();
         }
 
         [TestMethod]
-        public void GetNextGenerationShouldReturnDeadCellForASingleLivingCell()
+        public void GetNextGenerationOnASingleLivingCellShouldReturnDeadCell()
         {
             GameOfLife.GetNextGeneration("*").Should().Be(".");
         }
 
         [TestMethod]
-        public void GetNextGenerationShouldReturnDeadCellForASingleDeadCell()
+        public void GetNextGenerationOnASingleDeadCellShouldReturnDeadCell()
         {
             GameOfLife.GetNextGeneration(".").Should().Be(".");
         }
