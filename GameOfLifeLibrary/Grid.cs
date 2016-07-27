@@ -9,5 +9,10 @@
 
         public int NumberOfColumns { get; set; }
         public int NumberOfRows { get; set; }
+
+        public bool this[int column, int row]
+        {
+            get { throw new System.NotImplementedException(); }
+        }
     }
 }
