@@ -11,5 +11,11 @@ namespace GameOfLifeLibrary.Tests
         {
             GameOfLife.GetNextGeneration(string.Empty).Should().BeEmpty();
         }
+
+        [TestMethod]
+        public void GetNextGenerationShouldReturnDeadCellForASingleLivingCell()
+        {
+            GameOfLife.GetNextGeneration("*").Should().Be(".");
+        }
     }
 }
