@@ -4,7 +4,7 @@
     {
         public static Grid Parse(string text)
         {
-            throw new System.NotImplementedException();
+            return new Grid();
         }
 
         public int NumberOfColumns { get; set; }
