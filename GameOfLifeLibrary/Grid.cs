@@ -2,17 +2,36 @@
 {
     public class Grid
     {
+        private string _gridText;
+
         public static Grid Parse(string text)
         {
-            return new Grid();
+            return new Grid { _gridText = text };
         }
 
-        public int NumberOfColumns { get; set; }
-        public int NumberOfRows { get; set; }
+        public int NumberOfColumns
+        {
+            get
+            {
+                return _gridText.Length;
+            }
+        }
+
+        public int NumberOfRows
+        {
+
+            get
+            {
+                return _gridText.Length;
+            }
+        }
 
         public bool this[int column, int row]
         {
-            get { throw new System.NotImplementedException(); }
+            get
+            {
+                return _gridText[0] == '*';
+            }
         }
     }
 }
