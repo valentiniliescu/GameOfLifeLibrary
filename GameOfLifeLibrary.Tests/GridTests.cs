@@ -22,5 +22,17 @@ namespace GameOfLifeLibrary.Tests
             grid.NumberOfRows.Should().Be(1);
             grid[0, 0].Should().BeTrue();
         }
+
+        [TestMethod]
+        public void Parse2X2Grid()
+        {
+            var grid = Grid.Parse("*.\n.*");
+            grid.NumberOfColumns.Should().Be(2);
+            grid.NumberOfRows.Should().Be(2);
+            grid[0, 0].Should().BeTrue();
+            grid[1, 0].Should().BeTrue();
+            grid[0, 1].Should().BeTrue();
+            grid[1, 1].Should().BeTrue();
+        }
     }
 }
