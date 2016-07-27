@@ -7,9 +7,11 @@
             switch (grid)
             {
                 case "*":
+                case ".":
                     return ".";
+                default:
+                    return string.Empty;
             }
-            return string.Empty;
         }
     }
 }
