@@ -1,8 +1,11 @@
-﻿namespace GameOfLifeLibrary
+﻿using System.Linq;
+
+namespace GameOfLifeLibrary
 {
     public class Grid
     {
         private string _gridText;
+        private static readonly char RowDelimiter = '\n';
 
         public static Grid Parse(string text)
         {
@@ -13,7 +16,7 @@
         {
             get
             {
-                return _gridText.Length;
+                return _gridText.IndexOf(RowDelimiter) > -1 ? _gridText.IndexOf(RowDelimiter) : _gridText.Length;
             }
         }
 
@@ -22,7 +25,7 @@
 
             get
             {
-                return _gridText.Length;
+                return _gridText != string.Empty ? _gridText.Count(c => c == RowDelimiter) + 1 : 0;
             }
         }
 
@@ -30,7 +33,7 @@
         {
             get
             {
-                return _gridText[0] == '*';
+                return _gridText[row *(NumberOfColumns + 1/*RowDelimiter length*/) + column] == '*';
             }
         }
     }

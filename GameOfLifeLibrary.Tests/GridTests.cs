@@ -30,8 +30,8 @@ namespace GameOfLifeLibrary.Tests
             grid.NumberOfColumns.Should().Be(2);
             grid.NumberOfRows.Should().Be(2);
             grid[0, 0].Should().BeTrue();
-            grid[1, 0].Should().BeTrue();
-            grid[0, 1].Should().BeTrue();
+            grid[1, 0].Should().BeFalse();
+            grid[0, 1].Should().BeFalse();
             grid[1, 1].Should().BeTrue();
         }
     }
