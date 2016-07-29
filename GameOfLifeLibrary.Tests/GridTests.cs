@@ -128,5 +128,12 @@ namespace GameOfLifeLibrary.Tests
             var grid = Grid.Parse("..\n**");
             grid.GetNextGeneration(0, 0).Should().BeFalse();
         }
+
+        [TestMethod]
+        public void DeadCellWithTooManyLiveNeighborsStaysDead()
+        {
+            var grid = Grid.Parse("*.*\n*.*");
+            grid.GetNextGeneration(1, 0).Should().BeFalse();
+        }
     }
 }
