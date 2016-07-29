@@ -25,5 +25,10 @@ namespace GameOfLifeLibrary
         public int NumberOfRows { get; }
 
         public bool this[int column, int row] => _gridText[row *(NumberOfColumns + 1/*RowDelimiter length*/) + column] == '*';
+
+        public override string ToString()
+        {
+            return _gridText;
+        }
     }
 }
