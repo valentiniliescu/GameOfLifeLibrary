@@ -148,5 +148,11 @@ namespace GameOfLifeLibrary.Tests
         {
             Grid.Parse("***\n.**").GetNextGeneration().ToString().Should().Be("*.*\n*.*");
         }
+
+        [TestMethod]
+        public void GetNextGenerationEmptyGrid()
+        {
+            Grid.Parse(string.Empty).GetNextGeneration().ToString().Should().Be(string.Empty);
+        }
     }
 }
