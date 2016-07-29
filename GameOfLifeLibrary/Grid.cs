@@ -60,7 +60,7 @@ namespace GameOfLifeLibrary
         {
             var liveNeighborsCount = GetNumberOfLivingNeighbors(column, row);
 
-            return this[column, row] && liveNeighborsCount >= 2;
+            return this[column, row] && liveNeighborsCount >= 2 && liveNeighborsCount <= 3;
         }
     }
 }
