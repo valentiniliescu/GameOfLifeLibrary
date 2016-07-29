@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
 namespace GameOfLifeLibrary
 {
@@ -73,6 +74,11 @@ namespace GameOfLifeLibrary
             return 
                 (this[coordinates] && liveNeighborsCount >= 2 && liveNeighborsCount <= 3) ||
                 (!this[coordinates] && liveNeighborsCount == 3);
+        }
+
+        public Grid GetNextGeneration()
+        {
+            throw new NotImplementedException();
         }
     }
 }

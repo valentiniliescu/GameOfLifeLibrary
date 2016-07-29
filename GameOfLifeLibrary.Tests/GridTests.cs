@@ -142,5 +142,11 @@ namespace GameOfLifeLibrary.Tests
             var grid = Grid.Parse(".*\n**");
             grid.GetNextGeneration(0, 0).Should().BeTrue();
         }
+
+        [TestMethod]
+        public void GetNextGenerationGrid()
+        {
+            Grid.Parse("***\n.**").GetNextGeneration().ToString().Should().Be("*.*\n*.*");
+        }
     }
 }
