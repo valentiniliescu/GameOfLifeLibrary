@@ -121,5 +121,12 @@ namespace GameOfLifeLibrary.Tests
             grid.GetNextGeneration(1, 0).Should().BeTrue();
             grid.GetNextGeneration(0, 1).Should().BeTrue();
         }
+
+        [TestMethod]
+        public void DeadCellWithTooFewLiveNeighborsStaysDead()
+        {
+            var grid = Grid.Parse("..\n**");
+            grid.GetNextGeneration(0, 0).Should().BeFalse();
+        }
     }
 }
