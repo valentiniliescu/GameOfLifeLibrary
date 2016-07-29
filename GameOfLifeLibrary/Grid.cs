@@ -55,5 +55,10 @@ namespace GameOfLifeLibrary
             return 0 <= gridCoordinates.Column && gridCoordinates.Column < NumberOfColumns && 
                 0 <= gridCoordinates.Row && gridCoordinates.Row < NumberOfRows;
         }
+
+        public bool GetNextGeneration(int column, int row)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

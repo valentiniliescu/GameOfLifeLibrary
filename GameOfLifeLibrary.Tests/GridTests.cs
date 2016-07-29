@@ -99,5 +99,12 @@ namespace GameOfLifeLibrary.Tests
             grid.GetNumberOfLivingNeighbors(0, 2).Should().Be(1);
             grid.GetNumberOfLivingNeighbors(2, 2).Should().Be(2);
         }
+
+        [TestMethod]
+        public void LiveCellWithTooFewLiveNeighborsDies()
+        {
+            var grid = Grid.Parse("***\n.**\n*.*");
+            grid.GetNextGeneration(0, 2).Should().BeFalse();
+        }
     }
 }
