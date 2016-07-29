@@ -26,6 +26,8 @@ namespace GameOfLifeLibrary
 
         public bool this[int column, int row] => _gridText[row *(NumberOfColumns + 1/*RowDelimiter length*/) + column] == '*';
 
+        public bool this[GridCoordinates coordinates] => this[coordinates.Column, coordinates.Row];
+
         public override string ToString()
         {
             return _gridText;
@@ -41,11 +43,17 @@ namespace GameOfLifeLibrary
 
             var neighborCoordinates = neighborOffsets
                 .Select(offset => new GridCoordinates(column + offset.Column, row + offset.Row))
-                .Where(gridCoordinates => 0 <= gridCoordinates.Column && gridCoordinates.Column < NumberOfColumns && 0 <= gridCoordinates.Row && gridCoordinates.Row < NumberOfRows);
+                .Where(AreInBounds);
 
-            var livingNeighborsCount = neighborCoordinates.Count(gridCoordinates => this[gridCoordinates.Column, gridCoordinates.Row]);
+            var livingNeighborsCount = neighborCoordinates.Count(gridCoordinates => this[gridCoordinates]);
 
             return livingNeighborsCount;
+        }
+
+        private bool AreInBounds(GridCoordinates gridCoordinates)
+        {
+            return 0 <= gridCoordinates.Column && gridCoordinates.Column < NumberOfColumns && 
+                0 <= gridCoordinates.Row && gridCoordinates.Row < NumberOfRows;
         }
     }
 }
