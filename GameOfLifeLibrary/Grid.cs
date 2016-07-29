@@ -36,14 +36,14 @@ namespace GameOfLifeLibrary
             var offsets = new[]{-1, 0, 1};
 
             var neighborOffsets = offsets
-                .SelectMany(c => offsets, (offsetColumn, offsetRow) => new { column = offsetColumn, row = offsetRow })
-                .Where(offset => offset.column != 0 || offset.row != 0);
+                .SelectMany(c => offsets, (offsetColumn, offsetRow) => new GridCoordinates(offsetColumn, offsetRow))
+                .Where(offset => offset.Column != 0 || offset.Row != 0);
 
             var neighborCoordinates = neighborOffsets
-                .Select(offset => new {column = column + offset.column, row = row + offset.row})
-                .Where(coords => 0 <= coords.column && coords.column < NumberOfColumns && 0 <= coords.row && coords.row < NumberOfRows);
+                .Select(offset => new GridCoordinates(column + offset.Column, row + offset.Row))
+                .Where(gridCoordinates => 0 <= gridCoordinates.Column && gridCoordinates.Column < NumberOfColumns && 0 <= gridCoordinates.Row && gridCoordinates.Row < NumberOfRows);
 
-            var livingNeighborsCount = neighborCoordinates.Count(coords => this[coords.column, coords.row]);
+            var livingNeighborsCount = neighborCoordinates.Count(gridCoordinates => this[gridCoordinates.Column, gridCoordinates.Row]);
 
             return livingNeighborsCount;
         }
