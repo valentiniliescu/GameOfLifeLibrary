@@ -58,7 +58,9 @@ namespace GameOfLifeLibrary
 
         public bool GetNextGeneration(int column, int row)
         {
-            throw new System.NotImplementedException();
+            var liveNeighborsCount = GetNumberOfLivingNeighbors(column, row);
+
+            return this[column, row] && liveNeighborsCount >= 2;
         }
     }
 }
