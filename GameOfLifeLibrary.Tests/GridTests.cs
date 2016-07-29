@@ -88,5 +88,16 @@ namespace GameOfLifeLibrary.Tests
 
             grid.GetNumberOfLivingNeighbors(1, 1).Should().Be(8);
         }
+
+        [TestMethod]
+        public void NumberOfLivingNeighborsInTheCorners()
+        {
+            var grid = Grid.Parse("***\n.**\n*.*");
+
+            grid.GetNumberOfLivingNeighbors(0, 0).Should().Be(2);
+            grid.GetNumberOfLivingNeighbors(2, 0).Should().Be(3);
+            grid.GetNumberOfLivingNeighbors(0, 2).Should().Be(1);
+            grid.GetNumberOfLivingNeighbors(2, 2).Should().Be(2);
+        }
     }
 }
