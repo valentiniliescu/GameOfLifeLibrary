@@ -24,9 +24,9 @@ namespace GameOfLifeLibrary
 
         public int NumberOfRows { get; }
 
-        public bool this[int column, int row] => _gridText[row *(NumberOfColumns + 1/*RowDelimiter length*/) + column] == '*';
+        public bool this[int column, int row] => this[new GridCoordinates(column, row)];
 
-        public bool this[GridCoordinates coordinates] => this[coordinates.Column, coordinates.Row];
+        public bool this[GridCoordinates coordinates] => _gridText[coordinates.Row * (NumberOfColumns + 1/*RowDelimiter length*/) + coordinates.Column] == '*';
 
         public override string ToString()
         {
@@ -35,6 +35,11 @@ namespace GameOfLifeLibrary
 
         public int GetNumberOfLivingNeighbors(int column, int row)
         {
+            return GetNumberOfLivingNeighbors(new GridCoordinates(column, row));
+        }
+
+        public int GetNumberOfLivingNeighbors(GridCoordinates coordinates)
+        {
             var offsets = new[]{-1, 0, 1};
 
             var neighborOffsets = offsets
@@ -42,7 +47,7 @@ namespace GameOfLifeLibrary
                 .Where(offset => offset.Column != 0 || offset.Row != 0);
 
             var neighborCoordinates = neighborOffsets
-                .Select(offset => new GridCoordinates(column + offset.Column, row + offset.Row))
+                .Select(offset => new GridCoordinates(coordinates.Column + offset.Column, coordinates.Row + offset.Row))
                 .Where(AreInBounds);
 
             var livingNeighborsCount = neighborCoordinates.Count(gridCoordinates => this[gridCoordinates]);
@@ -58,9 +63,14 @@ namespace GameOfLifeLibrary
 
         public bool GetNextGeneration(int column, int row)
         {
-            var liveNeighborsCount = GetNumberOfLivingNeighbors(column, row);
+            return GetNextGeneration(new GridCoordinates(column, row));
+        }
 
-            return this[column, row] && liveNeighborsCount >= 2 && liveNeighborsCount <= 3;
+        public bool GetNextGeneration(GridCoordinates coordinates)
+        {
+            var liveNeighborsCount = GetNumberOfLivingNeighbors(coordinates);
+
+            return this[coordinates] && liveNeighborsCount >= 2 && liveNeighborsCount <= 3;
         }
     }
 }
