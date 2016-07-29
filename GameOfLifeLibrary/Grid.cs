@@ -1,12 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace GameOfLifeLibrary
 {
     public class Grid
-    { 
+    {
         private static readonly char RowDelimiter = '\n';
+        private static readonly char LiveCellText = '*';
+        private static readonly char DeadCellText = '.';
 
         private readonly string _gridText;
 
@@ -28,7 +31,7 @@ namespace GameOfLifeLibrary
 
         public bool this[int column, int row] => this[new GridCoordinates(column, row)];
 
-        public bool this[GridCoordinates coordinates] => _gridText[coordinates.Row * (NumberOfColumns + 1/*RowDelimiter length*/) + coordinates.Column] == '*';
+        public bool this[GridCoordinates coordinates] => _gridText[coordinates.Row * (NumberOfColumns + 1/*RowDelimiter length*/) + coordinates.Column] == LiveCellText;
 
         public override string ToString()
         {
@@ -42,7 +45,7 @@ namespace GameOfLifeLibrary
 
         public int GetNumberOfLivingNeighbors(GridCoordinates coordinates)
         {
-            var offsets = new[]{-1, 0, 1};
+            var offsets = new[] { -1, 0, 1 };
 
             var neighborOffsets = offsets
                 .SelectMany(c => offsets, (offsetColumn, offsetRow) => new GridCoordinates(offsetColumn, offsetRow))
@@ -59,7 +62,7 @@ namespace GameOfLifeLibrary
 
         private bool AreInBounds(GridCoordinates gridCoordinates)
         {
-            return 0 <= gridCoordinates.Column && gridCoordinates.Column < NumberOfColumns && 
+            return 0 <= gridCoordinates.Column && gridCoordinates.Column < NumberOfColumns &&
                 0 <= gridCoordinates.Row && gridCoordinates.Row < NumberOfRows;
         }
 
@@ -72,32 +75,29 @@ namespace GameOfLifeLibrary
         {
             var liveNeighborsCount = GetNumberOfLivingNeighbors(coordinates);
 
-            return 
+            return
                 (this[coordinates] && liveNeighborsCount >= 2 && liveNeighborsCount <= 3) ||
                 (!this[coordinates] && liveNeighborsCount == 3);
         }
 
         public Grid GetNextGeneration()
         {
-            StringBuilder newGridStringBuilder = new StringBuilder(_gridText.Length);
-            for (var row = 0; row < NumberOfRows; row++)
-            {
-                for (var column = 0; column < NumberOfColumns; column++)
-                {
-                    var coordinates = new GridCoordinates(column, row);
+            var rows = Enumerable.Range(0, NumberOfRows);
+            var columns = Enumerable.Range(0, NumberOfColumns);
 
-                    newGridStringBuilder.Append(GetNextGeneration(coordinates) ? '*' : '.');
-                }
+            Func<int, IEnumerable<char>> getNextGenRowTextCharacters =
+                row => columns
+                    .Select(column => new GridCoordinates(column, row))
+                    .Select(GetNextGeneration)
+                    .Select(cell => cell ? LiveCellText : DeadCellText)
+                    .Concat(new[] { RowDelimiter });
 
-                newGridStringBuilder.Append(RowDelimiter);
-            }
+            var nextGenGridTextCharactersArray = rows
+                .SelectMany(getNextGenRowTextCharacters)
+                .Take(_gridText.Length)
+                .ToArray();
 
-            if (newGridStringBuilder.Length > 0)
-            {
-                newGridStringBuilder.Length--;
-            }
-
-            return new Grid(newGridStringBuilder.ToString());
+            return new Grid(new string(nextGenGridTextCharactersArray));
         }
     }
 }
