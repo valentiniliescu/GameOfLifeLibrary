@@ -72,5 +72,13 @@ namespace GameOfLifeLibrary.Tests
         }
 
         //TODO: add invalid parsing tests
+        //TODO: add invalid column and row tests
+
+        [TestMethod]
+        public void GridToStringShouldReturnInputString()
+        {
+            var gridText = "*.*\n***";
+            Grid.Parse(gridText).ToString().Should().Be(gridText);
+        }
     }
 }
