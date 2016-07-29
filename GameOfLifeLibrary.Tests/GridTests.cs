@@ -86,7 +86,7 @@ namespace GameOfLifeLibrary.Tests
         {
             var grid = Grid.Parse("***\n***\n***");
 
-            grid.GetNumberOfLivingNeighbors(1, 1).Should().Be(9);
+            grid.GetNumberOfLivingNeighbors(1, 1).Should().Be(8);
         }
     }
 }

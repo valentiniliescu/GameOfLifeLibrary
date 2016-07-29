@@ -31,9 +31,21 @@ namespace GameOfLifeLibrary
             return _gridText;
         }
 
-        public int GetNumberOfLivingNeighbors(int i, int i1)
+        public int GetNumberOfLivingNeighbors(int column, int row)
         {
-            throw new System.NotImplementedException();
+            var offsets = new[]{-1, 0, 1};
+
+            var neighborOffsets = offsets
+                .SelectMany(c => offsets, (offsetColumn, offsetRow) => new { column = offsetColumn, row = offsetRow })
+                .Where(offset => offset.column != 0 || offset.row != 0);
+
+            var neighborCoordinates = neighborOffsets
+                .Select(offset => new {column = column + offset.column, row = row + offset.row})
+                .Where(coords => 0 <= coords.column && coords.column < NumberOfColumns && 0 <= coords.row && coords.row < NumberOfRows);
+
+            var livingNeighborsCount = neighborCoordinates.Count(coords => this[coords.column, coords.row]);
+
+            return livingNeighborsCount;
         }
     }
 }
