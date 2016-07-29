@@ -80,5 +80,13 @@ namespace GameOfLifeLibrary.Tests
             var gridText = "*.*\n***";
             Grid.Parse(gridText).ToString().Should().Be(gridText);
         }
+
+        [TestMethod]
+        public void NumberOfLivingNeighborsInTheCenter()
+        {
+            var grid = Grid.Parse("***\n***\n***");
+
+            grid.GetNumberOfLivingNeighbors(1, 1).Should().Be(9);
+        }
     }
 }

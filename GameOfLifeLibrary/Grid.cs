@@ -30,5 +30,10 @@ namespace GameOfLifeLibrary
         {
             return _gridText;
         }
+
+        public int GetNumberOfLivingNeighbors(int i, int i1)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
