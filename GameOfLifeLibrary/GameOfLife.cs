@@ -2,16 +2,9 @@
 {
     public static class GameOfLife
     {
-        public static string GetNextGeneration(string grid)
+        public static string GetNextGeneration(string gridText)
         {
-            switch (grid)
-            {
-                case "*":
-                case ".":
-                    return ".";
-                default:
-                    return string.Empty;
-            }
+            return Grid.Parse(gridText).GetNextGeneration().ToString();
         }
     }
 }
