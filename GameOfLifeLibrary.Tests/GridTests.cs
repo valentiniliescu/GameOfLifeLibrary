@@ -113,5 +113,13 @@ namespace GameOfLifeLibrary.Tests
             var grid = Grid.Parse(".**\n***");
             grid.GetNextGeneration(1, 0).Should().BeFalse();
         }
+
+        [TestMethod]
+        public void LiveCellWithSomeLiveNeighborsSurvives()
+        {
+            var grid = Grid.Parse(".*.\n***");
+            grid.GetNextGeneration(1, 0).Should().BeTrue();
+            grid.GetNextGeneration(0, 1).Should().BeTrue();
+        }
     }
 }
