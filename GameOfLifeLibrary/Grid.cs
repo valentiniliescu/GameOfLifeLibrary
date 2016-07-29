@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text;
 
 namespace GameOfLifeLibrary
 {
@@ -78,7 +79,25 @@ namespace GameOfLifeLibrary
 
         public Grid GetNextGeneration()
         {
-            throw new NotImplementedException();
+            StringBuilder newGridStringBuilder = new StringBuilder(_gridText.Length);
+            for (var row = 0; row < NumberOfRows; row++)
+            {
+                for (var column = 0; column < NumberOfColumns; column++)
+                {
+                    var coordinates = new GridCoordinates(column, row);
+
+                    newGridStringBuilder.Append(GetNextGeneration(coordinates) ? '*' : '.');
+                }
+
+                newGridStringBuilder.Append(RowDelimiter);
+            }
+
+            if (newGridStringBuilder.Length > 0)
+            {
+                newGridStringBuilder.Length--;
+            }
+
+            return new Grid(newGridStringBuilder.ToString());
         }
     }
 }
