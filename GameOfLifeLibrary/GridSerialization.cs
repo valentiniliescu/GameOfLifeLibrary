@@ -4,7 +4,7 @@
     {
         public static Grid Parse(string input)
         {
-            throw new System.NotImplementedException();
+            return new Grid();
         }
     }
 }
