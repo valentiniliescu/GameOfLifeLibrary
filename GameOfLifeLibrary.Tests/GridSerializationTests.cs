@@ -11,5 +11,13 @@ namespace GameOfLifeLibrary.Tests
         {
             GridSerialization.Parse("").Should().Be(new Grid());
         }
+
+        [TestMethod]
+        public void ParsingOneStarCharacterShouldReturn1X1GridWithLiveCell()
+        {
+            var booleanGrid = new[,] { { true } };
+
+            GridSerialization.Parse("*").Should().Be(new Grid(booleanGrid));
+        }
     }
 }
