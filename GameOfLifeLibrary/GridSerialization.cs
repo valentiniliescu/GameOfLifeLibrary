@@ -1,13 +1,10 @@
-﻿using JetBrains.Annotations;
-
-namespace GameOfLifeLibrary
+﻿namespace GameOfLifeLibrary
 {
     public static class GridSerialization
     {
-        [NotNull, Pure]
-        public static Grid Parse([NotNull] string input)
+        public static Grid Parse(string input)
         {
-            return new Grid(0, 0);
+            return new Grid();
         }
     }
 }

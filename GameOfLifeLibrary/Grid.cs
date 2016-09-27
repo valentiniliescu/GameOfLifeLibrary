@@ -1,12 +1,7 @@
 namespace GameOfLifeLibrary
 {
     public class Grid
-    { 
-        public Grid(int rows, int columns)
-        {
-            
-        }
-
+    {
         public override bool Equals(object obj)
         {
             var other = obj as Grid;

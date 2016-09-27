@@ -9,7 +9,7 @@ namespace GameOfLifeLibrary.Tests
         [TestMethod]
         public void ParsingEmptyStringShouldReturn0X0Grid()
         {
-            GridSerialization.Parse("").Should().Be(new Grid(0, 0));
+            GridSerialization.Parse("").Should().Be(new Grid());
         }
     }
 }
