@@ -1,4 +1,3 @@
-using System;
 using JetBrains.Annotations;
 
 namespace GameOfLifeLibrary
@@ -9,18 +8,36 @@ namespace GameOfLifeLibrary
 
         public Grid()
         {
-            this._booleanGrid = new bool[0,0];
+            _booleanGrid = new bool[0, 0];
         }
 
         public Grid([NotNull] bool[,] booleanGrid)
         {
-            this._booleanGrid = booleanGrid;
+            _booleanGrid = (bool[,])booleanGrid.Clone();
         }
 
         public override bool Equals(object obj)
         {
             var other = obj as Grid;
-            return other != null && _booleanGrid.GetLength(0) == other._booleanGrid.GetLength(0) && _booleanGrid.GetLength(1) == other._booleanGrid.GetLength(1);
+
+            if (other == null || _booleanGrid.GetLength(0) != other._booleanGrid.GetLength(0) ||
+                _booleanGrid.GetLength(1) != other._booleanGrid.GetLength(1))
+            {
+                return false;
+            }
+
+            for (var row = 0; row < _booleanGrid.GetLength(0); row++)
+            {
+                for (var col = 0; col < _booleanGrid.GetLength(1); col++)
+                {
+                    if (_booleanGrid[row, col] != other._booleanGrid[row, col])
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
         }
 
         public override int GetHashCode()
