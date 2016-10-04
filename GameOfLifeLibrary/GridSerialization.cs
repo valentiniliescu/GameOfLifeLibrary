@@ -15,7 +15,7 @@ namespace GameOfLifeLibrary
             }
             else
             {
-                return new Grid(new bool[,] { {true} });
+                return new Grid(new bool[,] { {input[0] == '*'} });
             }
         }
     }
