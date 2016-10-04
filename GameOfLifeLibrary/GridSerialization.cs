@@ -7,6 +7,10 @@ namespace GameOfLifeLibrary
 {
     public static class GridSerialization
     {
+        private const char NewLineCharacter = '\n';
+        private const char LiveCellCharacter = '*';
+        private const char DeadCellCharacter = '.';
+
         [NotNull, Pure]
         public static Grid Parse([NotNull] string input)
         {
@@ -16,12 +20,12 @@ namespace GameOfLifeLibrary
             }
             else
             {
-                var rows = input.Split(new[] {'\n'}, StringSplitOptions.RemoveEmptyEntries);
+                var rows = input.Split(new[] { NewLineCharacter }, StringSplitOptions.RemoveEmptyEntries);
                 var booleanGrid = new bool[rows.Length, rows[0].Length];
 
                 for (var row = 0; row < booleanGrid.GetLength(0); row++)
                 {
-                    var booleanRow = rows[row].Select(c => c == '*').ToArray();
+                    var booleanRow = rows[row].Select(c => c == LiveCellCharacter).ToArray();
                     for (var col = 0; col < booleanGrid.GetLength(1); col++)
                     {
                         booleanGrid[row, col] = booleanRow[col];
@@ -39,9 +43,9 @@ namespace GameOfLifeLibrary
             {
                 for (var col = 0; col < grid.NumberOfColumns; col++)
                 {
-                    sb.Append(grid[row, col] ? '*' : '.');
+                    sb.Append(grid[row, col] ? LiveCellCharacter : DeadCellCharacter);
                 }
-                sb.Append('\n');
+                sb.Append(NewLineCharacter);
             }
 
             if (sb.Length > 0)
