@@ -30,9 +30,10 @@ namespace GameOfLifeLibrary
             }
         }
 
-        public static string ToString(Grid grid)
+        [NotNull, Pure]
+        public static string ToString([NotNull] Grid grid)
         {
-            throw new NotImplementedException();
+            return String.Empty;
         }
     }
 }
