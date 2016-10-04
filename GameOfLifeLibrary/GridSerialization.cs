@@ -15,7 +15,13 @@ namespace GameOfLifeLibrary
             }
             else
             {
-                return new Grid(new bool[,] { {input[0] == '*'} });
+                var booleanLineArray = input.Select(c => c == '*').ToArray();
+                var booleanGrid = new bool[1, booleanLineArray.Length];
+                for (var col = 0; col < booleanGrid.GetLength(1); col++)
+                {
+                    booleanGrid[0, col] = booleanLineArray[col];
+                }
+                return new Grid(booleanGrid);
             }
         }
     }
