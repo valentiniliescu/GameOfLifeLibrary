@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text;
 using JetBrains.Annotations;
 
 namespace GameOfLifeLibrary
@@ -33,7 +34,22 @@ namespace GameOfLifeLibrary
         [NotNull, Pure]
         public static string ToString([NotNull] Grid grid)
         {
-            return String.Empty;
+            var sb = new StringBuilder();
+            for (var row = 0; row < grid.NumberOfRows; row++)
+            {
+                for (var col = 0; col < grid.NumberOfColumns; col++)
+                {
+                    sb.Append(grid[row, col] ? '*' : '.');
+                }
+                sb.Append('\n');
+            }
+
+            if (sb.Length > 0)
+            {
+                sb.Length--;
+            }
+
+            return sb.ToString();
         }
     }
 }
