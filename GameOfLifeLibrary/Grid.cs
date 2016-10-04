@@ -42,6 +42,7 @@ namespace GameOfLifeLibrary
 
         public override int GetHashCode()
         {
+            // TODO: implement it
             return 0;
         }
     }

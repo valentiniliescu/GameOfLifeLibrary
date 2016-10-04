@@ -1,4 +1,6 @@
-﻿using JetBrains.Annotations;
+﻿using System;
+using System.Linq;
+using JetBrains.Annotations;
 
 namespace GameOfLifeLibrary
 {
@@ -7,7 +9,14 @@ namespace GameOfLifeLibrary
         [NotNull, Pure]
         public static Grid Parse([NotNull] string input)
         {
-            return new Grid();
+            if (input == String.Empty)
+            {
+                return new Grid();
+            }
+            else
+            {
+                return new Grid(new bool[,] { {true} });
+            }
         }
     }
 }
