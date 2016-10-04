@@ -49,5 +49,13 @@ namespace GameOfLifeLibrary.Tests
         {
             GridSerialization.ToString(new Grid()).Should().BeEmpty();
         }
+
+        [TestMethod]
+        public void GridToStringShouldReturnString()
+        {
+            var booleanGrid = new[,] { { true, false }, { false, true } };
+
+            GridSerialization.ToString(new Grid(booleanGrid)).Should().Be("*.\n.*");
+        }
     }
 }
