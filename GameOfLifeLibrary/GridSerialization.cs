@@ -29,5 +29,10 @@ namespace GameOfLifeLibrary
                 return new Grid(booleanGrid);
             }
         }
+
+        public static string ToString(Grid grid)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
