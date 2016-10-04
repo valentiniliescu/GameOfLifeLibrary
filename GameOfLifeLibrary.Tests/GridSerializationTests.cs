@@ -35,5 +35,13 @@ namespace GameOfLifeLibrary.Tests
 
             GridSerialization.Parse("*.").Should().Be(new Grid(booleanGrid));
         }
+
+        [TestMethod]
+        public void ParsingMultipleLinesShouldReturnAGrid()
+        {
+            var booleanGrid = new[,] { { true, false }, { false, true } };
+
+            GridSerialization.Parse("*.\n.*").Should().Be(new Grid(booleanGrid));
+        }
     }
 }
