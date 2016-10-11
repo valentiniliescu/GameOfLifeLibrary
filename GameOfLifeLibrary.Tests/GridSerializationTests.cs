@@ -9,7 +9,7 @@ namespace GameOfLifeLibrary.Tests
         [TestMethod]
         public void ParsingEmptyStringShouldReturn0X0Grid()
         {
-            GridSerialization.Parse("").Should().Be(new Grid());
+            Grid.Parse("").Should().Be(new Grid());
         }
 
         [TestMethod]
@@ -17,7 +17,7 @@ namespace GameOfLifeLibrary.Tests
         {
             var booleanGrid = new[,] { { true } };
 
-            GridSerialization.Parse("*").Should().Be(new Grid(booleanGrid));
+            Grid.Parse("*").Should().Be(new Grid(booleanGrid));
         }
 
         [TestMethod]
@@ -25,7 +25,7 @@ namespace GameOfLifeLibrary.Tests
         {
             var booleanGrid = new[,] { { false } };
 
-            GridSerialization.Parse(".").Should().Be(new Grid(booleanGrid));
+            Grid.Parse(".").Should().Be(new Grid(booleanGrid));
         }
 
         [TestMethod]
@@ -33,7 +33,7 @@ namespace GameOfLifeLibrary.Tests
         {
             var booleanGrid = new[,] { { true, false } };
 
-            GridSerialization.Parse("*.").Should().Be(new Grid(booleanGrid));
+            Grid.Parse("*.").Should().Be(new Grid(booleanGrid));
         }
 
         [TestMethod]
@@ -41,13 +41,13 @@ namespace GameOfLifeLibrary.Tests
         {
             var booleanGrid = new[,] { { true, false }, { false, true } };
 
-            GridSerialization.Parse("*.\n.*").Should().Be(new Grid(booleanGrid));
+            Grid.Parse("*.\n.*").Should().Be(new Grid(booleanGrid));
         }
 
         [TestMethod]
         public void EmptyGridToStringShouldReturnEmptyString()
         {
-            GridSerialization.ToString(new Grid()).Should().BeEmpty();
+            new Grid().ToString().Should().BeEmpty();
         }
 
         [TestMethod]
@@ -55,7 +55,7 @@ namespace GameOfLifeLibrary.Tests
         {
             var booleanGrid = new[,] { { true, false }, { false, true } };
 
-            GridSerialization.ToString(new Grid(booleanGrid)).Should().Be("*.\n.*");
+            new Grid(booleanGrid).ToString().Should().Be("*.\n.*");
         }
 
         [TestMethod]

@@ -1,14 +1,21 @@
+using System;
+using System.Linq;
+using System.Text;
 using JetBrains.Annotations;
 
 namespace GameOfLifeLibrary
 {
     public class Grid
     {
+        private const char NewLineCharacter = '\n';
+        private const char LiveCellCharacter = '*';
+        private const char DeadCellCharacter = '.';
+
         private readonly bool[,] _booleanGrid;
 
-        public bool this[int row, int col] => _booleanGrid[row, col];
-        public int NumberOfRows => _booleanGrid.GetLength(0);
-        public int NumberOfColumns => _booleanGrid.GetLength(1);
+        private bool this[int row, int col] => _booleanGrid[row, col];
+        private int NumberOfRows => _booleanGrid.GetLength(0);
+        private int NumberOfColumns => _booleanGrid.GetLength(1);
 
         public Grid()
         {
@@ -74,6 +81,51 @@ namespace GameOfLifeLibrary
             }
 
             return count;
+        }
+
+        [NotNull, Pure]
+        public static Grid Parse([NotNull] string input)
+        {
+            if (input == String.Empty)
+            {
+                return new Grid();
+            }
+            else
+            {
+                var rows = input.Split(new[] { NewLineCharacter }, StringSplitOptions.RemoveEmptyEntries);
+                var booleanGrid = new bool[rows.Length, rows[0].Length];
+
+                for (var row = 0; row < booleanGrid.GetLength(0); row++)
+                {
+                    var booleanRow = rows[row].Select(c => c == LiveCellCharacter).ToArray();
+                    for (var col = 0; col < booleanGrid.GetLength(1); col++)
+                    {
+                        booleanGrid[row, col] = booleanRow[col];
+                    }
+                }
+                return new Grid(booleanGrid);
+            }
+        }
+
+        [Pure]
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            for (var row = 0; row < NumberOfRows; row++)
+            {
+                for (var col = 0; col < NumberOfColumns; col++)
+                {
+                    sb.Append(this[row, col] ? LiveCellCharacter : DeadCellCharacter);
+                }
+                sb.Append(NewLineCharacter);
+            }
+
+            if (sb.Length > 0)
+            {
+                sb.Length--;
+            }
+
+            return sb.ToString();
         }
     }
 }
