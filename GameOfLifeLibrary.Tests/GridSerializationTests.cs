@@ -57,5 +57,13 @@ namespace GameOfLifeLibrary.Tests
 
             GridSerialization.ToString(new Grid(booleanGrid)).Should().Be("*.\n.*");
         }
+
+        [TestMethod]
+        public void GridGetLiveCellNeighborCount()
+        {
+            var booleanGrid = new[,] { { true, false }, { false, true } };
+
+            new Grid(booleanGrid).GetLiveCellNeighborCount(0, 0).Should().Be(1);
+        }
     }
 }

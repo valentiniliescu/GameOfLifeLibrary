@@ -48,5 +48,10 @@ namespace GameOfLifeLibrary
             // TODO: implement it
             return 0;
         }
+
+        public int GetLiveCellNeighborCount(int row, int column)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
