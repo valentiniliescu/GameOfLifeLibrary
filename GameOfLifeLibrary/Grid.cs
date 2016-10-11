@@ -6,7 +6,7 @@ namespace GameOfLifeLibrary
     {
         private readonly bool[,] _booleanGrid;
 
-        public bool this[int row , int col ] => _booleanGrid[row, col];
+        public bool this[int row, int col] => _booleanGrid[row, col];
         public int NumberOfRows => _booleanGrid.GetLength(0);
         public int NumberOfColumns => _booleanGrid.GetLength(1);
 
@@ -20,6 +20,7 @@ namespace GameOfLifeLibrary
             _booleanGrid = (bool[,])booleanGrid.Clone();
         }
 
+        [Pure]
         public override bool Equals(object obj)
         {
             var other = obj as Grid;
@@ -49,9 +50,30 @@ namespace GameOfLifeLibrary
             return 0;
         }
 
+        [Pure]
         public int GetLiveCellNeighborCount(int row, int column)
         {
-            throw new System.NotImplementedException();
+            var count = 0;
+
+            for (var currentRow = row - 1; currentRow <= row + 1; currentRow++)
+            {
+                for (var currentColumn = column - 1; currentColumn <= column + 1; currentColumn++)
+                {
+                    if (0 <= currentRow && currentRow < NumberOfRows
+                        && 0 <= currentColumn && currentColumn < NumberOfColumns
+                        && this[currentRow, currentColumn])
+                    {
+                        count++;
+                    }
+                }
+            }
+
+            if (this[row, column])
+            {
+                count--;
+            }
+
+            return count;
         }
     }
 }
