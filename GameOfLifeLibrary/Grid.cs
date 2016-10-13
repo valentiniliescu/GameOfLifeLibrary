@@ -130,7 +130,23 @@ namespace GameOfLifeLibrary
 
         public Grid GetNextGeneration()
         {
-            throw new NotImplementedException();
+            var nextGenerationBooleanGrid = new bool[NumberOfRows, NumberOfColumns];
+
+            for (var row = 0; row < NumberOfRows; row++)
+            {
+                for (var col = 0; col < NumberOfColumns; col++)
+                {
+                    nextGenerationBooleanGrid[row, col] = DetermineNextGenerationCell(_booleanGrid[row, col], GetLiveCellNeighborCount(row, col));
+                }
+            }
+
+            return new Grid(nextGenerationBooleanGrid);
+        }
+
+        private bool DetermineNextGenerationCell(bool liveCell, int liveCellNeighborCount)
+        {
+            return (liveCell && 2 <= liveCellNeighborCount && liveCellNeighborCount <= 3) ||
+                (!liveCell && liveCellNeighborCount == 3);
         }
     }
 }
