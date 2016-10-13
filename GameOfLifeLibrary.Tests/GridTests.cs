@@ -4,7 +4,7 @@ using FluentAssertions;
 namespace GameOfLifeLibrary.Tests
 {
     [TestClass]
-    public class GridSerializationTests
+    public class GridTests
     {
         [TestMethod]
         public void ParsingEmptyStringShouldReturn0X0Grid()
