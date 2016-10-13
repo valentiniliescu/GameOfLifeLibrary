@@ -127,5 +127,10 @@ namespace GameOfLifeLibrary
 
             return sb.ToString();
         }
+
+        public Grid GetNextGeneration()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

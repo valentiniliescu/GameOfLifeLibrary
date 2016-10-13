@@ -65,5 +65,11 @@ namespace GameOfLifeLibrary.Tests
 
             new Grid(booleanGrid).GetLiveCellNeighborCount(0, 0).Should().Be(1);
         }
+
+        [TestMethod]
+        public void GridGetNextGeneration()
+        {
+            Grid.Parse("***\n.**").GetNextGeneration().ToString().Should().Be("*.*\n*.*");
+        }
     }
 }
