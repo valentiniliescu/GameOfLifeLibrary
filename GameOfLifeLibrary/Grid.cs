@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace GameOfLifeLibrary
 {
@@ -11,6 +12,6 @@ namespace GameOfLifeLibrary
             CellCoordinates = cellCoordinates;
         }
 
-        public Coordinates[] CellsAndNeighborsCoordinates => new Coordinates[0];
+        public Coordinates[] CellsAndNeighborsCoordinates => CellCoordinates.SelectMany(coordinates => coordinates.NeighborsAndItself).ToArray();
     }
 }

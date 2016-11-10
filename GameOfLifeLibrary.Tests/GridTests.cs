@@ -15,7 +15,7 @@ namespace GameOfLifeLibrary.Tests
         }
 
         [TestMethod]
-        public void GridCellsAndNeighborsCoordinates()
+        public void SingleCellGridCellsAndNeighborsCoordinates()
         {
             var grid = new Grid(new[] { new Coordinates(0, 0) });
 
