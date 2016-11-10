@@ -7,13 +7,15 @@ namespace GameOfLifeLibrary
         private readonly int _row;
         private readonly int _column;
 
+        public Coordinates[] Neighbors => new Coordinates[0];
+
         public Coordinates(int row, int column)
         {
             _row = row;
             _column = column;
         }
 
-        protected bool Equals(Coordinates other)
+        private bool Equals(Coordinates other)
         {
             return _row == other._row && _column == other._column;
         }

@@ -60,6 +60,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="CoordinatesTests.cs" />
     <Compile Include="GridTests.cs" />
   </ItemGroup>
   <ItemGroup>
