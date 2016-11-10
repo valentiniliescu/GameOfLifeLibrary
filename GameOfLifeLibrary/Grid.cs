@@ -12,6 +12,6 @@ namespace GameOfLifeLibrary
             CellCoordinates = cellCoordinates;
         }
 
-        public Coordinates[] CellsAndNeighborsCoordinates => CellCoordinates.SelectMany(coordinates => coordinates.NeighborsAndItself).ToArray();
+        public Coordinates[] CellsAndNeighborsCoordinates => CellCoordinates.SelectMany(coordinates => coordinates.NeighborsAndItself).Distinct().ToArray();
     }
 }
