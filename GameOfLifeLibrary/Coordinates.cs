@@ -7,7 +7,17 @@ namespace GameOfLifeLibrary
         private readonly int _row;
         private readonly int _column;
 
-        public Coordinates[] Neighbors => new Coordinates[0];
+        public Coordinates[] Neighbors => new[]
+        {
+            new Coordinates(_row - 1, _column - 1),
+            new Coordinates(_row - 1, _column),
+            new Coordinates(_row - 1, _column + 1),
+            new Coordinates(_row, _column - 1),
+            new Coordinates(_row, _column + 1),
+            new Coordinates(_row + 1, _column - 1),
+            new Coordinates(_row + 1, _column),
+            new Coordinates(_row + 1, _column + 1)
+        };
 
         public Coordinates(int row, int column)
         {
@@ -25,14 +35,14 @@ namespace GameOfLifeLibrary
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals((Coordinates) obj);
+            return Equals((Coordinates)obj);
         }
 
         public override int GetHashCode()
         {
             unchecked
             {
-                return (_row*397) ^ _column;
+                return (_row * 397) ^ _column;
             }
         }
     }
