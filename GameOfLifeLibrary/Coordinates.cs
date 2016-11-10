@@ -6,7 +6,7 @@ namespace GameOfLifeLibrary
     {
         public Coordinates(int row, int column)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

@@ -6,7 +6,7 @@ namespace GameOfLifeLibrary
     {
         public Grid(Coordinates[] cells)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }
