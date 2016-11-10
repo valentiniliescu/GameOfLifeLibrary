@@ -48,5 +48,10 @@ namespace GameOfLifeLibrary
                 return (_row * 397) ^ _column;
             }
         }
+
+        public override string ToString()
+        {
+            return $"({_row}, {_column})";
+        }
     }
 }

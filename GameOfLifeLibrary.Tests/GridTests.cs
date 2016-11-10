@@ -19,7 +19,40 @@ namespace GameOfLifeLibrary.Tests
         {
             var grid = new Grid(new[] { new Coordinates(0, 0) });
 
-            grid.CellsAndNeighborsCoordinates.Should().BeEquivalentTo(new Coordinates(0, 0).NeighborsAndItself);
+            grid.CellsAndNeighborsCoordinates.Should().BeEquivalentTo(
+                new Coordinates(-1, -1),
+                new Coordinates(-1, 0),
+                new Coordinates(-1, 1),
+                new Coordinates(0, -1),
+                new Coordinates(0, 0),
+                new Coordinates(0, 1),
+                new Coordinates(1, -1),
+                new Coordinates(1, 0),
+                new Coordinates(1, 1)
+            );
+        }
+
+        [TestMethod]
+        public void MultipleCellsGridCellsAndNeighborsCoordinates()
+        {
+            var grid = new Grid(new[] { new Coordinates(0, 0), new Coordinates(1, 1) });
+
+            grid.CellsAndNeighborsCoordinates.Should().BeEquivalentTo(
+                new Coordinates(-1, -1),
+                new Coordinates(-1, 0),
+                new Coordinates(-1, 1),
+                new Coordinates(0, -1),
+                new Coordinates(0, 0),
+                new Coordinates(0, 1),
+                new Coordinates(1, -1),
+                new Coordinates(1, 0),
+                new Coordinates(1, 1),
+                new Coordinates(2, 0),
+                new Coordinates(2, 1),
+                new Coordinates(2, 2),
+                new Coordinates(1, 2),
+                new Coordinates(0, 2)
+            );
         }
     }
 }
