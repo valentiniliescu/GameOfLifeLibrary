@@ -60,7 +60,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="GridTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
