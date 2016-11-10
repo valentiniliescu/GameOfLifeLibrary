@@ -19,6 +19,8 @@ namespace GameOfLifeLibrary
             new Coordinates(_row + 1, _column + 1)
         };
 
+        public Coordinates[] NeighborsAndItself => new Coordinates[0];
+
         public Coordinates(int row, int column)
         {
             _row = row;
