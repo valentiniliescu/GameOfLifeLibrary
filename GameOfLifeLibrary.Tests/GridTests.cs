@@ -11,8 +11,7 @@ namespace GameOfLifeLibrary.Tests
         {
             var grid = new Grid(new[] {new Coordinates(0,0)});
 
-            grid.CellCoordinates.Should().HaveCount(1);
-            grid.CellCoordinates[0].Should().Be(new Coordinates(0, 0));
+            grid.CellCoordinates.Should().BeEquivalentTo(new Coordinates(0, 0));
         }
     }
 }
