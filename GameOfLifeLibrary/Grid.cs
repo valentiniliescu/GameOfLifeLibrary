@@ -4,9 +4,11 @@ namespace GameOfLifeLibrary
 {
     public class Grid
     {
-        public Grid(Coordinates[] cells)
+        public readonly Coordinates[] CellCoordinates;
+
+        public Grid(Coordinates[] cellCoordinates)
         {
-            
+            CellCoordinates = cellCoordinates;
         }
     }
 }

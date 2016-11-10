@@ -1,5 +1,4 @@
-﻿using System;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace GameOfLifeLibrary.Tests
@@ -8,13 +7,12 @@ namespace GameOfLifeLibrary.Tests
     public class GridTests
     {
         [TestMethod]
-        public void GridContructorShouldNotThrow()
+        public void GridConstructorShouldInitializeCellsCoordinates()
         {
-            Action a = () => new Grid(new[] {
-                new Coordinates(0,0)
-            });
+            var grid = new Grid(new[] {new Coordinates(0,0)});
 
-            a.ShouldNotThrow();
+            grid.CellCoordinates.Should().HaveCount(1);
+            grid.CellCoordinates[0].Should().Be(new Coordinates(0, 0));
         }
     }
 }
