@@ -11,8 +11,7 @@ namespace GameOfLifeLibrary.Tests
         {
             var coordinates = new Coordinates(0, 0);
 
-            coordinates.Neighbors.Should().BeEquivalentTo(new[]
-            {
+            coordinates.Neighbors.Should().BeEquivalentTo(
                 new Coordinates(-1, -1),
                 new Coordinates(-1, 0),
                 new Coordinates(-1, 1),
@@ -21,7 +20,7 @@ namespace GameOfLifeLibrary.Tests
                 new Coordinates(1, -1),
                 new Coordinates(1, 0),
                 new Coordinates(1, 1)
-            });
+            );
         }
     }
 }
