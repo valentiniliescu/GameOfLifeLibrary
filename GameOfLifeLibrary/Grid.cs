@@ -10,5 +10,7 @@ namespace GameOfLifeLibrary
         {
             CellCoordinates = cellCoordinates;
         }
+
+        public Coordinates[] CellsAndNeighborsCoordinates => new Coordinates[0];
     }
 }

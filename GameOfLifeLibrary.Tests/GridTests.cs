@@ -13,5 +13,13 @@ namespace GameOfLifeLibrary.Tests
 
             grid.CellCoordinates.Should().BeEquivalentTo(new Coordinates(0, 0));
         }
+
+        [TestMethod]
+        public void GridCellsAndNeighborsCoordinates()
+        {
+            var grid = new Grid(new[] { new Coordinates(0, 0) });
+
+            grid.CellsAndNeighborsCoordinates.Should().BeEquivalentTo(new Coordinates(0, 0).NeighborsAndItself);
+        }
     }
 }
