@@ -10,7 +10,7 @@ namespace GameOfLifeLibrary.Tests
         [TestMethod]
         public void GridConstructorShouldInitializeCellsCoordinates()
         {
-            var grid = new Grid(new[] { new Coordinates(0, 0) });
+            var grid = new Grid(new Coordinates(0, 0));
 
             grid.CellCoordinates.Should().BeEquivalentTo(new Coordinates(0, 0));
         }
@@ -18,7 +18,7 @@ namespace GameOfLifeLibrary.Tests
         [TestMethod]
         public void SingleCellGridCellsAndNeighborsCoordinates()
         {
-            var grid = new Grid(new[] { new Coordinates(0, 0) });
+            var grid = new Grid(new Coordinates(0, 0));
 
             grid.CellsAndNeighborsCoordinates.Should().BeEquivalentTo(
                 new Coordinates(-1, -1),
@@ -36,7 +36,7 @@ namespace GameOfLifeLibrary.Tests
         [TestMethod]
         public void MultipleCellsGridCellsAndNeighborsCoordinates()
         {
-            var grid = new Grid(new[] { new Coordinates(0, 0), new Coordinates(1, 1) });
+            var grid = new Grid(new Coordinates(0, 0), new Coordinates(1, 1));
 
             grid.CellsAndNeighborsCoordinates.Should().BeEquivalentTo(
                 new Coordinates(-1, -1),
@@ -59,7 +59,7 @@ namespace GameOfLifeLibrary.Tests
         [TestMethod]
         public void EmptyGridGetNextGenerationShouldReturnEmptyGrid()
         {
-            var grid = new Grid(new Coordinates[0]);
+            var grid = new Grid();
 
             grid.GetNextGeneration().CellCoordinates.Should().BeEmpty();
         }

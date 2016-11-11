@@ -8,9 +8,14 @@ namespace GameOfLifeLibrary
     {
         public readonly IEnumerable<Coordinates> CellCoordinates;
 
-        public Grid(IEnumerable<Coordinates> cellCoordinates)
+        private Grid(IEnumerable<Coordinates> cellCoordinates)
         {
             CellCoordinates = cellCoordinates;
+        }
+
+        public Grid(params Coordinates[] cellCoordinates): this((IEnumerable<Coordinates>)cellCoordinates)
+        {
+            
         }
 
         public IEnumerable<Coordinates> CellsAndNeighborsCoordinates => CellCoordinates.SelectMany(coordinates => coordinates.NeighborsAndItself).Distinct();
