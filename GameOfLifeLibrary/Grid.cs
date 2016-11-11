@@ -6,9 +6,9 @@ namespace GameOfLifeLibrary
 {
     public class Grid
     {
-        public readonly Coordinates[] CellCoordinates;
+        public readonly IEnumerable<Coordinates> CellCoordinates;
 
-        public Grid(Coordinates[] cellCoordinates)
+        public Grid(IEnumerable<Coordinates> cellCoordinates)
         {
             CellCoordinates = cellCoordinates;
         }
@@ -17,7 +17,7 @@ namespace GameOfLifeLibrary
 
         public Grid GetNextGeneration()
         {
-            return new Grid(new Coordinates[0]);
+            return new Grid(CellCoordinates);
         }
     }
 }
