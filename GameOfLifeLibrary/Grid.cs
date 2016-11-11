@@ -17,7 +17,7 @@ namespace GameOfLifeLibrary
 
         public Grid GetNextGeneration()
         {
-            throw new NotImplementedException();
+            return new Grid(new Coordinates[0]);
         }
     }
 }

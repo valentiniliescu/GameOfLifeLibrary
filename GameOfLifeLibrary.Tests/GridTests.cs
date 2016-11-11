@@ -57,7 +57,7 @@ namespace GameOfLifeLibrary.Tests
         }
 
         [TestMethod]
-        public void GridGetNextGeneration()
+        public void EmptyGridGetNextGenerationShouldReturnEmptyGrid()
         {
             var grid = new Grid(new Coordinates[0]);
 
