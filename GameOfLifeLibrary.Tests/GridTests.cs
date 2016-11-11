@@ -1,5 +1,4 @@
-﻿using System.Runtime.InteropServices;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace GameOfLifeLibrary.Tests
