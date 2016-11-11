@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using System.Runtime.InteropServices;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace GameOfLifeLibrary.Tests
@@ -53,6 +54,16 @@ namespace GameOfLifeLibrary.Tests
                 new Coordinates(1, 2),
                 new Coordinates(0, 2)
             );
+        }
+
+        [TestMethod]
+        public void GridGetNextGeneration()
+        {
+            var grid = new Grid(new Coordinates[0]);
+
+            Grid nextGenerationGrid = grid.GetNextGeneration();
+
+            nextGenerationGrid.CellCoordinates.Should().BeEmpty();
         }
     }
 }
