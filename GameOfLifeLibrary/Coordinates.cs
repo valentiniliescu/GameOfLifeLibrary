@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 
 namespace GameOfLifeLibrary
 {
@@ -20,8 +18,6 @@ namespace GameOfLifeLibrary
             new Coordinates(_row + 1, _column),
             new Coordinates(_row + 1, _column + 1)
         };
-
-        public IEnumerable<Coordinates> NeighborsAndItself => Neighbors.Union(new[] { this });
 
         public Coordinates(int row, int column)
         {

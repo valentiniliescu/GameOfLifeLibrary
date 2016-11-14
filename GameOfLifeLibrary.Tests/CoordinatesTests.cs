@@ -22,23 +22,5 @@ namespace GameOfLifeLibrary.Tests
                 new Coordinates(1, 1)
             );
         }
-
-        [TestMethod]
-        public void CoordinatesNeighborsAndItself()
-        {
-            var coordinates = new Coordinates(0, 0);
-
-            coordinates.NeighborsAndItself.Should().BeEquivalentTo(
-                new Coordinates(-1, -1),
-                new Coordinates(-1, 0),
-                new Coordinates(-1, 1),
-                new Coordinates(0, -1),
-                new Coordinates(0, 0),
-                new Coordinates(0, 1),
-                new Coordinates(1, -1),
-                new Coordinates(1, 0),
-                new Coordinates(1, 1)
-            );
-        }
     }
 }
