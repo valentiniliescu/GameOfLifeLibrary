@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace GameOfLifeLibrary
 {
@@ -23,7 +24,18 @@ namespace GameOfLifeLibrary
 
         public Grid GetNextGeneration()
         {
-            return new Grid(CellCoordinates);
+            var cellsThatContinueToLive =
+                CellCoordinates.Where(
+                    c =>
+                        1 < c.Neighbors.Intersect(CellCoordinates).Count() &&
+                        c.Neighbors.Intersect(CellCoordinates).Count() < 4);
+            var cellsThatBecomeAlive =
+                NeighborsCoordinates.Where(
+                    c =>
+                        2 < c.Neighbors.Intersect(CellCoordinates).Count() &&
+                        c.Neighbors.Intersect(CellCoordinates).Count() < 4);
+
+            return new Grid(cellsThatContinueToLive.Union(cellsThatBecomeAlive));
         }
     }
 }
