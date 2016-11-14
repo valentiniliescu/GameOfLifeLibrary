@@ -19,6 +19,8 @@ namespace GameOfLifeLibrary
 
         public IEnumerable<Coordinates> CellsAndNeighborsCoordinates => CellCoordinates.SelectMany(coordinates => coordinates.NeighborsAndItself).Distinct();
 
+        public IEnumerable<Coordinates> NeighborsCoordinates => CellCoordinates.SelectMany(coordinates => coordinates.Neighbors).Except(CellCoordinates).Distinct();
+
         public Grid GetNextGeneration()
         {
             return new Grid(CellCoordinates);
