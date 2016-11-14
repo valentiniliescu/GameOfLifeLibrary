@@ -78,5 +78,13 @@ namespace GameOfLifeLibrary.Tests
 
             grid.GetNextGeneration().CellCoordinates.Should().BeEquivalentTo(cellCoordinates);
         }
+
+        [TestMethod]
+        public void GridWithOneCellGetNextGenerationShouldReturnEmptyGrid()
+        {
+            var grid = new Grid(new Coordinates(0, 0));
+
+            grid.GetNextGeneration().CellCoordinates.Should().BeEmpty();
+        }
     }
 }
