@@ -83,5 +83,30 @@ namespace GameOfLifeLibrary.Tests
 
             grid.GetNextGeneration().CellCoordinates.Should().BeEmpty();
         }
+
+        [TestMethod, TestCategory("Integration")]
+        public void Blinker()
+        {
+            var cellCoordinates = new[]
+            {
+                new Coordinates(0, 1),
+                new Coordinates(1, 1),
+                new Coordinates(2, 1)
+            };
+
+            var grid = new Grid(cellCoordinates);
+
+            var firstGeneration = grid.GetNextGeneration();
+
+            firstGeneration.CellCoordinates.Should().BeEquivalentTo(
+                new Coordinates(1, 0),
+                new Coordinates(1, 1),
+                new Coordinates(1, 2)
+            );
+
+            var secondGeneration = firstGeneration.GetNextGeneration();
+
+            secondGeneration.CellCoordinates.Should().BeEquivalentTo(cellCoordinates);
+        }
     }
 }
